@@ -11,7 +11,13 @@ public class Player : MonoBehaviour
 
     public float speed;
 
-    public float forceJump = 2; 
+    public float speedRun;
+
+    public float forceJump = 2;
+
+    private float _currentSpeed;
+
+    public bool _isRunning = false;
 
 
     private void Update(){
@@ -22,15 +28,25 @@ public class Player : MonoBehaviour
     }
 
     private void HandleMove(){
-        if(Input.GetKey(KeyCode.LeftArrow)){
-            //rig2D.MovePosition(rig2D.position - velocity * Time.deltaTime);
 
-            rig2D.velocity = new Vector2(-speed, rig2D.velocity.y);
+        //chegar velocidade que está usando
+        if(Input.GetKey(KeyCode.LeftShift)){
+            _currentSpeed = speedRun;
+        }
+        else {
+            _currentSpeed = speed;
+        }
+
+        _isRunning = (Input.GetKey(KeyCode.LeftShift));
+
+
+        if(Input.GetKey(KeyCode.LeftArrow)){
+
+             rig2D.velocity = new Vector2(-_currentSpeed, rig2D.velocity.y);
         }
         else if(Input.GetKey(KeyCode.RightArrow)){
-           // rig2D.MovePosition(rig2D.position + velocity * Time.deltaTime);
 
-            rig2D.velocity = new Vector2(speed, rig2D.velocity.y);
+            rig2D.velocity = new Vector2(_currentSpeed, rig2D.velocity.y);
 
         }
 
@@ -47,4 +63,6 @@ public class Player : MonoBehaviour
             rig2D.velocity = Vector2.up * forceJump;
         }
     }
+
+
 }
