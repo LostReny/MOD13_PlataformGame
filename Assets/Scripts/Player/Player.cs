@@ -72,26 +72,20 @@ public class Player : MonoBehaviour
             rig2D.transform.localScale = Vector2.one;
 
             DOTween.Kill(rig2D.transform);
-
+            
             HandleScaleJump();
             _isJumping = true;
+
+            
         }
         else{
             _isJumping = false;
+            //HandleScaleArrive();
         }
     }
 
     // quando o player colidir com o chão depois de pular - deve animar para baixo
     // como fazer isso ??
-    // necessário para a próxima etapa 
-    // ARRUMAR ESSA PARTE DO CÓDIGO
-    /*private void HandleScaleArrive(){
-        if(GameObject.FindWithTag("Florr")){
-            _isOnFlorr = true;
-            rig2D.transform.DOScaleY(setDownAnim, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        } else _isOnFlorr = false;          
-
-    }*/
 
     private void HandleScaleArrive(){
     // Verifica se o objeto colidiu com o chão
