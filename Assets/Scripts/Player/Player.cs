@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-
+    [Header("Player")]
     public Rigidbody2D rig2D;
-
     public Vector2 friction = new Vector2(.1f, 0);
+    public bool _isOnFlorr = false;
 
+    [Header("SpeedSetup")]
     public float speed;
-
     public float speedRun;
-
     public float forceJump = 2;
-
     private float _currentSpeed;
-
     public bool _isRunning = false;
 
+    [Header("AnimationSetup")]
+    public float jumpAnimScaleY = 1.5f;
+    public float jumpAnimScaleX = 1.5f;
+
+    public float animDuration = .3f;
+    public Ease ease = Ease.OutBack;
+
+    public float setDownAnim = 0.5f;
 
     private void Update(){
         
@@ -61,8 +67,28 @@ public class Player : MonoBehaviour
     private void HandleJump(){
         if(Input.GetKeyDown(KeyCode.Space)){
             rig2D.velocity = Vector2.up * forceJump;
+            rig2D.transform.localScale = Vector2.one;
+
+            DOTween.Kill(rig2D.transform);
+
+            HandleScaleJump();
         }
     }
 
+    // quando o player colidir com o chão depois de pular - deve animar para baixo
+    // como fazer isso ??
+    // necessário para a próxima etapa 
+    // ARRUMAR ESSA PARTE DO CÓDIGO
+    private void HandleScaleArrive(){
+        if(GameObject.FindWithTag("Florr")){
+            _isOnFlorr = true;
+            rig2D.transform.DOScaleY(setDownAnim, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        } else _isOnFlorr = false;          
 
+    }// NÃO FUNCIONA
+
+    private void HandleScaleJump(){
+        rig2D.transform.DOScaleY(jumpAnimScaleY, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        rig2D.transform.DOScaleX(jumpAnimScaleX, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+    }
 }
