@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 516708619}
   - component: {fileID: 516708618}
   - component: {fileID: 516708617}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Florr
   m_Icon: {fileID: 0}
@@ -311,20 +311,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &516708619
-Transform:
+--- !u!224 &516708619
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516708616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.75, y: -1.396, z: -7.3}
+  m_LocalPosition: {x: 0, y: 0, z: -7.3}
   m_LocalScale: {x: 18.199152, y: 0.9771235, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -12.75, y: -1.396}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &947299300
 GameObject:
   m_ObjectHideFlags: 3
@@ -423,7 +428,7 @@ GameObject:
   - component: {fileID: 1030548038}
   - component: {fileID: 1030548037}
   - component: {fileID: 1030548036}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Florr
   m_Icon: {fileID: 0}
@@ -873,7 +878,7 @@ GameObject:
   - component: {fileID: 2136463005}
   - component: {fileID: 2136463004}
   - component: {fileID: 2136463003}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Florr
   m_Icon: {fileID: 0}

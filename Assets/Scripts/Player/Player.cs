@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public Vector2 friction = new Vector2(.1f, 0);
     public bool _isOnFlorr = false;
 
+    public bool _isJumping = false;
+
     [Header("SpeedSetup")]
     public float speed;
     public float speedRun;
@@ -72,6 +74,10 @@ public class Player : MonoBehaviour
             DOTween.Kill(rig2D.transform);
 
             HandleScaleJump();
+            _isJumping = true;
+        }
+        else{
+            _isJumping = false;
         }
     }
 
@@ -79,13 +85,31 @@ public class Player : MonoBehaviour
     // como fazer isso ??
     // necessário para a próxima etapa 
     // ARRUMAR ESSA PARTE DO CÓDIGO
-    private void HandleScaleArrive(){
+    /*private void HandleScaleArrive(){
         if(GameObject.FindWithTag("Florr")){
             _isOnFlorr = true;
             rig2D.transform.DOScaleY(setDownAnim, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
         } else _isOnFlorr = false;          
 
-    }// NÃO FUNCIONA
+    }*/
+
+    private void HandleScaleArrive(){
+    // Verifica se o objeto colidiu com o chão
+    GameObject floorObject = GameObject.FindGameObjectWithTag("Florr");
+    if (floorObject != null){
+        // Se colidiu com o chão
+        _isOnFlorr = true;
+        _isJumping = false;
+        rig2D.transform.DOScaleY(setDownAnim, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+    }
+    else{
+        _isOnFlorr = false;
+        _isJumping = true;
+
+    }
+}
+
+
 
     private void HandleScaleJump(){
         rig2D.transform.DOScaleY(jumpAnimScaleY, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
