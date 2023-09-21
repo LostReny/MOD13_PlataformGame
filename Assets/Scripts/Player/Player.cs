@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     public bool _isJumping = false;
 
+    public GameObject floorObject;
+
     [Header("SpeedSetup")]
     public float speed;
     public float speedRun;
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
     private void Update(){
         
         HandleJump();
+        
         HandleMove();
 
     }
@@ -67,7 +70,7 @@ public class Player : MonoBehaviour
     }
 
     private void HandleJump(){
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetKey(KeyCode.Space)){
             rig2D.velocity = Vector2.up * forceJump;
             rig2D.transform.localScale = Vector2.one;
 
@@ -86,24 +89,25 @@ public class Player : MonoBehaviour
 
     // quando o player colidir com o chão depois de pular - deve animar para baixo
     // como fazer isso ??
-
+/*
     private void HandleScaleArrive(){
     // Verifica se o objeto colidiu com o chão
-    GameObject floorObject = GameObject.FindGameObjectWithTag("Florr");
+    floorObject = GameObject.FindGameObjectWithTag("Florr");
     if (floorObject != null){
         // Se colidiu com o chão
         _isOnFlorr = true;
-        _isJumping = false;
+        _isJumping = true;
         rig2D.transform.DOScaleY(setDownAnim, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
     }
     else{
         _isOnFlorr = false;
-        _isJumping = true;
+        _isJumping = false;
+        DOTween.Kill(rig2D.transform);
+
 
     }
 }
-
-
+*/
 
     private void HandleScaleJump(){
         rig2D.transform.DOScaleY(jumpAnimScaleY, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
