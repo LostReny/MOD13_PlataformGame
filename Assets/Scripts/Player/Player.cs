@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
     private void Update(){
         
         HandleJump();
-        
         HandleMove();
 
     }
@@ -86,6 +85,33 @@ public class Player : MonoBehaviour
             //HandleScaleArrive();
         }
     }
+
+/*
+    private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.compareTag("Florr")){
+            _isOnFlorr = true;
+            _isJumping = false;
+        rig2D.transform.DOScaleY(setDownAnim, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision){
+        if(collision.compareTag("Florr")){
+            Debug.Log("off ground collision");
+            _isOnFlorr = false;
+            _isJumping = true;
+
+            HandleJump();
+    }
+
+    private void OnTriggerStayt2D(Collider2D collision){
+        if(collision.compareTag("Florr")){
+            Debug.Log("still on the ground collision");
+            _isOnFlorr =true;
+            _isJumping = false;
+        }
+
+    }*/
 
     // quando o player colidir com o chão depois de pular - deve animar para baixo
     // como fazer isso ??
