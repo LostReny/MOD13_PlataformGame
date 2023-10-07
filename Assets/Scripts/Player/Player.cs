@@ -82,58 +82,8 @@ public class Player : MonoBehaviour
         }
         else{
             _isJumping = false;
-            //HandleScaleArrive();
         }
     }
-
-/*
-    private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.compareTag("Florr")){
-            _isOnFlorr = true;
-            _isJumping = false;
-        rig2D.transform.DOScaleY(setDownAnim, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision){
-        if(collision.compareTag("Florr")){
-            Debug.Log("off ground collision");
-            _isOnFlorr = false;
-            _isJumping = true;
-
-            HandleJump();
-    }
-
-    private void OnTriggerStayt2D(Collider2D collision){
-        if(collision.compareTag("Florr")){
-            Debug.Log("still on the ground collision");
-            _isOnFlorr =true;
-            _isJumping = false;
-        }
-
-    }*/
-
-    // quando o player colidir com o chão depois de pular - deve animar para baixo
-    // como fazer isso ??
-/*
-    private void HandleScaleArrive(){
-    // Verifica se o objeto colidiu com o chão
-    floorObject = GameObject.FindGameObjectWithTag("Florr");
-    if (floorObject != null){
-        // Se colidiu com o chão
-        _isOnFlorr = true;
-        _isJumping = true;
-        rig2D.transform.DOScaleY(setDownAnim, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-    }
-    else{
-        _isOnFlorr = false;
-        _isJumping = false;
-        DOTween.Kill(rig2D.transform);
-
-
-    }
-}
-*/
 
     private void HandleScaleJump(){
         rig2D.transform.DOScaleY(jumpAnimScaleY, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
