@@ -28,7 +28,11 @@ public class Player : MonoBehaviour
     public float animDuration = .3f;
     public Ease ease = Ease.OutBack;
 
-    public float setDownAnim = 0.5f;
+    [Header("Animation Player")]
+    public string boolRunning = "Running";
+    public string boolJumping = "Jumping";
+    public Animator animator;
+    public float turnPlayerDuration = .1f;
 
     private void Update(){
         
@@ -42,9 +46,11 @@ public class Player : MonoBehaviour
         //chegar velocidade que está usando
         if(Input.GetKey(KeyCode.LeftShift)){
             _currentSpeed = speedRun;
+            animator.speed = 1.5f;
         }
         else {
             _currentSpeed = speed;
+            animator.speed = 1f;
         }
 
         _isRunning = (Input.GetKey(KeyCode.LeftShift));
@@ -53,11 +59,27 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftArrow)){
 
              rig2D.velocity = new Vector2(-_currentSpeed, rig2D.velocity.y);
+
+            if(rig2D.transform.localScale.x != -1){
+                rig2D.transform.DOScaleX(-1, turnPlayerDuration);
+            }
+
+             animator.SetBool(boolRunning, true);
+
         }
         else if(Input.GetKey(KeyCode.RightArrow)){
 
             rig2D.velocity = new Vector2(_currentSpeed, rig2D.velocity.y);
 
+            if(rig2D.transform.localScale.x != 1){
+                rig2D.transform.DOScaleX(1, turnPlayerDuration);
+            }
+
+             animator.SetBool(boolRunning, true);
+
+        }
+        else{
+            animator.SetBool(boolRunning, false);
         }
 
         if(rig2D.velocity.x >0){
@@ -73,67 +95,19 @@ public class Player : MonoBehaviour
             rig2D.velocity = Vector2.up * forceJump;
             rig2D.transform.localScale = Vector2.one;
 
+            animator.SetBool(boolJumping, true);
+
             DOTween.Kill(rig2D.transform);
             
-            HandleScaleJump();
+            //HandleScaleJump();
             _isJumping = true;
-
-            
         }
         else{
             _isJumping = false;
-            //HandleScaleArrive();
+            animator.SetBool(boolJumping, false);
+
         }
     }
-
-/*
-    private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.compareTag("Florr")){
-            _isOnFlorr = true;
-            _isJumping = false;
-        rig2D.transform.DOScaleY(setDownAnim, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision){
-        if(collision.compareTag("Florr")){
-            Debug.Log("off ground collision");
-            _isOnFlorr = false;
-            _isJumping = true;
-
-            HandleJump();
-    }
-
-    private void OnTriggerStayt2D(Collider2D collision){
-        if(collision.compareTag("Florr")){
-            Debug.Log("still on the ground collision");
-            _isOnFlorr =true;
-            _isJumping = false;
-        }
-
-    }*/
-
-    // quando o player colidir com o chão depois de pular - deve animar para baixo
-    // como fazer isso ??
-/*
-    private void HandleScaleArrive(){
-    // Verifica se o objeto colidiu com o chão
-    floorObject = GameObject.FindGameObjectWithTag("Florr");
-    if (floorObject != null){
-        // Se colidiu com o chão
-        _isOnFlorr = true;
-        _isJumping = true;
-        rig2D.transform.DOScaleY(setDownAnim, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-    }
-    else{
-        _isOnFlorr = false;
-        _isJumping = false;
-        DOTween.Kill(rig2D.transform);
-
-
-    }
-}
-*/
 
     private void HandleScaleJump(){
         rig2D.transform.DOScaleY(jumpAnimScaleY, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
