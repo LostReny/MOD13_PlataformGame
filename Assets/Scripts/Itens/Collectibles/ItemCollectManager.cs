@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ItemCollectManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ItemCollectManager : MonoBehaviour
 
     public int coins = 0;
 
+    public TextMeshProUGUI coinsText;
+
     private void Awake() {
 
         if(Instance == null)
@@ -16,8 +19,11 @@ public class ItemCollectManager : MonoBehaviour
         else 
         Destroy(gameObject);
        
-       
         coins = 0;
+    }
+
+    private void Update() {
+        coinsText.text = "x " + coins; 
     }
 
     private void Start() {
