@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [Header("Player")]
     public Rigidbody2D rig2D;
+    public HealthBase healthBase;
     public Vector2 friction = new Vector2(.1f, 0);
     public bool _isOnFlorr = false;
 
@@ -31,8 +32,20 @@ public class Player : MonoBehaviour
     [Header("Animation Player")]
     public string boolRunning = "Running";
     public string boolJumping = "Jumping";
+    public string triggerDeath = "Death";
     public Animator animator;
     public float turnPlayerDuration = .1f;
+
+    private void Awake() {
+        if(healthBase != null) {
+            healthBase.OnKill += OnPlayerKill;
+        }
+    }
+
+    private void OnPlayerKill(){
+        healthBase.OnKill -= OnPlayerKill;
+        animator.SetTrigger(triggerDeath);
+    }
 
     private void Update(){
         
@@ -56,7 +69,7 @@ public class Player : MonoBehaviour
         _isRunning = (Input.GetKey(KeyCode.LeftShift));
 
 
-        if(Input.GetKey(KeyCode.LeftArrow)){
+        if(Input.GetKey(KeyCode.A)){
 
              rig2D.velocity = new Vector2(-_currentSpeed, rig2D.velocity.y);
 
@@ -67,7 +80,7 @@ public class Player : MonoBehaviour
              animator.SetBool(boolRunning, true);
 
         }
-        else if(Input.GetKey(KeyCode.RightArrow)){
+        else if(Input.GetKey(KeyCode.D)){
 
             rig2D.velocity = new Vector2(_currentSpeed, rig2D.velocity.y);
 
