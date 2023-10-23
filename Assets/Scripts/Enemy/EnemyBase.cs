@@ -9,8 +9,22 @@ public class EnemyBase : MonoBehaviour
    [Header("Animations")] 
    public Animator anim;
    public string triggerAttack = "Attack";
+   public string triggerDead = "Death";
 
+   public float timeToDestroy = 1f;
    public HealthBase health;
+
+   private void Awake() {
+        if(health != null){
+            health.OnKill += OnEnemyKill;
+        }
+   }
+
+   private void OnEnemyKill(){
+        health.OnKill -= OnEnemyKill;
+        DeadAnimation();
+        //Destroy(gameObject, timeToDestroy);
+   }
    
    private void OnCollisionEnter2D(Collision2D collision) {
 
@@ -28,6 +42,11 @@ public class EnemyBase : MonoBehaviour
         anim.SetTrigger(triggerAttack);
    }
    // não se usa a tag - usa uma variavel salva dentro da memória
+
+    private void DeadAnimation(){
+        anim.SetTrigger(triggerDead);
+    }
+
 
     public void Damage(int amount){
         health.TakeDamage(amount);

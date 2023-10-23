@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [Header("Player")]
     public Rigidbody2D rig2D;
+    public HealthBase healthBase;
     public Vector2 friction = new Vector2(.1f, 0);
     public bool _isOnFlorr = false;
 
@@ -31,8 +32,20 @@ public class Player : MonoBehaviour
     [Header("Animation Player")]
     public string boolRunning = "Running";
     public string boolJumping = "Jumping";
+    public string triggerDeath = "Death";
     public Animator animator;
     public float turnPlayerDuration = .1f;
+
+    private void Awake() {
+        if(healthBase != null) {
+            healthBase.OnKill += OnPlayerKill;
+        }
+    }
+
+    private void OnPlayerKill(){
+        healthBase.OnKill -= OnPlayerKill;
+        animator.SetTrigger(triggerDeath);
+    }
 
     private void Update(){
         

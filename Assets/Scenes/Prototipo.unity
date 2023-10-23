@@ -483,6 +483,8 @@ MonoBehaviour:
   damage: 10
   anim: {fileID: 2113750631}
   triggerAttack: Attack
+  triggerDead: Death
+  timeToDestroy: 1
   health: {fileID: 183423813}
 --- !u!61 &183423811
 BoxCollider2D:
@@ -546,7 +548,7 @@ MonoBehaviour:
   startLife: 5
   _destroyOnTermination: 1
   _flashColor: {fileID: 0}
-  delayTokill: 0
+  delayTokill: 2
 --- !u!114 &183423814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3364,7 +3366,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 21
 --- !u!1 &1346800903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3754,6 +3756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rig2D: {fileID: 1437393715}
+  healthBase: {fileID: 1437393720}
   friction: {x: 0.5, y: 0}
   _isOnFlorr: 0
   _isJumping: 0
@@ -3768,6 +3771,7 @@ MonoBehaviour:
   ease: 27
   boolRunning: Running
   boolJumping: Jumping
+  triggerDeath: Death
   animator: {fileID: 888591054}
   turnPlayerDuration: -1.67
 --- !u!114 &1437393720
@@ -3785,7 +3789,7 @@ MonoBehaviour:
   startLife: 10
   _destroyOnTermination: 1
   _flashColor: {fileID: 1385082247}
-  delayTokill: 0.2
+  delayTokill: 1
 --- !u!212 &1464801340 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5842915932965311795, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
@@ -4194,6 +4198,8 @@ MonoBehaviour:
   damage: 10
   anim: {fileID: 0}
   triggerAttack: Attack
+  triggerDead: Death
+  timeToDestroy: 1
   health: {fileID: 0}
 --- !u!1 &1552026599
 GameObject:
