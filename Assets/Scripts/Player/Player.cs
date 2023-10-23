@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         _isRunning = (Input.GetKey(KeyCode.LeftShift));
 
 
-        if(Input.GetKey(KeyCode.LeftArrow)){
+        if(Input.GetKey(KeyCode.A)){
 
              rig2D.velocity = new Vector2(-_currentSpeed, rig2D.velocity.y);
 
@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
              animator.SetBool(boolRunning, true);
 
         }
-        else if(Input.GetKey(KeyCode.RightArrow)){
+        else if(Input.GetKey(KeyCode.D)){
 
             rig2D.velocity = new Vector2(_currentSpeed, rig2D.velocity.y);
 

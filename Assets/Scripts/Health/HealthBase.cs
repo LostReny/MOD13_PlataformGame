@@ -12,10 +12,15 @@ public class HealthBase : MonoBehaviour
 
   private bool _isDead = false;
 
+  [SerializeField] private FlashColor _flashColor;
+
   public float delayTokill;
 
   public void Awake(){
     Init();
+    if(_flashColor == null){
+        _flashColor = GetComponent<FlashColor>(); 
+    }
   }
 
   
@@ -34,6 +39,10 @@ public class HealthBase : MonoBehaviour
 
     if(_currentLife <= 0){
       Die();
+    }
+
+    if(_flashColor != null){
+      _flashColor.Flash();
     }
   }
 
