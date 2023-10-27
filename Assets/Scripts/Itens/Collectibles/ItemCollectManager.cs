@@ -10,7 +10,7 @@ public class ItemCollectManager : MonoBehaviour
 
     public int coins = 0;
 
-    public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI coinsCounterText;
 
     private void Awake() {
 
@@ -19,11 +19,10 @@ public class ItemCollectManager : MonoBehaviour
         else 
         Destroy(gameObject);
        
-        coins = 0;
     }
 
     private void Update() {
-        coinsText.text = "x " + coins; 
+        UpdateUi();
     }
 
     private void Start() {
@@ -37,5 +36,11 @@ public class ItemCollectManager : MonoBehaviour
 
     public void AddCoins(int amount = 1) {
         coins += amount;
+    }
+
+    public void UpdateUi()
+    {
+        coinsCounterText.text = "x " + coins;
+
     }
 }

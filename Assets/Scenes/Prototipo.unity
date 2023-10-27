@@ -2731,7 +2731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coins: 0
-  coinsText: {fileID: 146444846}
+  coinsCounterText: {fileID: 146444846}
 --- !u!210 &1146134657
 SortingGroup:
   m_ObjectHideFlags: 0
