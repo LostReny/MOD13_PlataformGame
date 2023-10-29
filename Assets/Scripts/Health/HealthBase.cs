@@ -2,15 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Singleton;
 
-public class HealthBase : MonoBehaviour
+public class HealthBase : Singleton<HealthBase>
 {
   public Action OnKill;
-  public int startLife = 10;
+
+  public SOInt life; 
+
+ // public int startLife = 10;
 
   public bool _destroyOnTermination = false;
 
-  private float _currentLife;
+  [SerializeField] private float _currentLife;
 
   private bool _isDead = false;
 
@@ -28,16 +32,15 @@ public class HealthBase : MonoBehaviour
   
   private void Init(){
     _isDead = false;
-    _currentLife = startLife;
+    _currentLife = life.value;
   }
 
-
-
-  public void TakeDamage(int damage){
+  public void TakeDamage(int intDamage){
 
     if(_isDead) return;
 
-    _currentLife -= damage;
+    _currentLife -= intDamage;
+     Debug.Log(_currentLife);
 
     if(_currentLife <= 0){
       Die();
@@ -46,9 +49,10 @@ public class HealthBase : MonoBehaviour
     if(_flashColor != null){
       _flashColor.Flash();
     }
-  }
+  
+    }
 
-  private void Die(){
+    private void Die(){
     _isDead = true;
 
     if(_destroyOnTermination){

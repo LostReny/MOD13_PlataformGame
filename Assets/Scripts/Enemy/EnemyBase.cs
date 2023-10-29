@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-   public int damage = 10;
+   public SOInt intDamage; 
 
    [Header("Animations")] 
    public Animator anim;
@@ -28,12 +28,12 @@ public class EnemyBase : MonoBehaviour
    
    private void OnCollisionEnter2D(Collision2D collision) {
 
-    Debug.Log(collision.transform.name);
+    // Debug.Log(collision.transform.name);
 
     var health = collision.gameObject.GetComponent<HealthBase>();
 
     if(health != null){
-        health.TakeDamage(damage);
+        health.TakeDamage(intDamage.value);
         AttackAnimation();
     }
    }
