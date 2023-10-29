@@ -6,6 +6,9 @@ using Singleton;
 
 public class UiInGameManager : Singleton<UiInGameManager>
 {
+    
+    public HealthBase health;
+
     public TextMeshProUGUI coinsCounterText;
 
     public TextMeshProUGUI lifeText;

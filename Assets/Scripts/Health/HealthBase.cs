@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Singleton;
+using TMPro;
 
 public class HealthBase : Singleton<HealthBase>
 {
   public Action OnKill;
 
-  public SOInt life; 
+  public SOInt life;
 
  // public int startLife = 10;
 
@@ -28,7 +29,6 @@ public class HealthBase : Singleton<HealthBase>
         _flashColor = GetComponent<FlashColor>(); 
     }
   }
-
   
   private void Init(){
     _isDead = false;
@@ -42,14 +42,13 @@ public class HealthBase : Singleton<HealthBase>
     _currentLife -= intDamage;
      Debug.Log(_currentLife);
 
-    if(_currentLife <= 0){
+        if (_currentLife <= 0){
       Die();
     }
 
     if(_flashColor != null){
       _flashColor.Flash();
     }
-  
     }
 
     private void Die(){

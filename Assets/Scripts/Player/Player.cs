@@ -23,10 +23,10 @@ public class Player : MonoBehaviour
     public bool _isRunning = false;
 
     [Header("AnimationSetup")]
-    public float jumpAnimScaleY = 1.5f;
-    public float jumpAnimScaleX = 1.5f;
+    public SOFloat SOjumpAnimScaleY;
+    public SOFloat SOjumpAnimScaleX;
+    public SOFloat SOanimDuration; 
 
-    public float animDuration = .3f;
     public Ease ease = Ease.OutBack;
 
     [Header("Animation Player")]
@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
     }
 
     private void HandleScaleJump(){
-        rig2D.transform.DOScaleY(jumpAnimScaleY, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        rig2D.transform.DOScaleX(jumpAnimScaleX, animDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        rig2D.transform.DOScaleY(SOjumpAnimScaleY.fValue, SOanimDuration.fValue).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        rig2D.transform.DOScaleX(SOjumpAnimScaleX.fValue, SOanimDuration.fValue).SetLoops(2, LoopType.Yoyo).SetEase(ease);
     }
 }
