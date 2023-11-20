@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-   public int damage = 10;
+   public SOInt intDamage;
+
+    public SOInt enemyLife;  
 
    [Header("Animations")] 
    public Animator anim;
@@ -18,22 +20,30 @@ public class EnemyBase : MonoBehaviour
         if(health != null){
             health.OnKill += OnEnemyKill;
         }
+
+        enemyLife.value = 5;
    }
 
    private void OnEnemyKill(){
         health.OnKill -= OnEnemyKill;
         DeadAnimation();
         //Destroy(gameObject, timeToDestroy);
+        
+        if (enemyLife.value == 0)
+        {
+            enemyLife.value = 5;
+        }
+        else return;
    }
    
    private void OnCollisionEnter2D(Collision2D collision) {
 
-    Debug.Log(collision.transform.name);
+    // Debug.Log(collision.transform.name);
 
     var health = collision.gameObject.GetComponent<HealthBase>();
 
     if(health != null){
-        health.TakeDamage(damage);
+        health.TakeDamage(intDamage.value);
         AttackAnimation();
     }
    }

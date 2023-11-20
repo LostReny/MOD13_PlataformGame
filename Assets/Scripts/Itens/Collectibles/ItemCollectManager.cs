@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Singleton;
 
-public class ItemCollectManager : MonoBehaviour
+public class ItemCollectManager : Singleton<ItemCollectManager>
 {
-
-    public static ItemCollectManager Instance;
-
-    public int coins = 0;
-
-    public TextMeshProUGUI coinsText;
+    public SOInt coins;
 
     private void Awake() {
 
@@ -19,11 +15,10 @@ public class ItemCollectManager : MonoBehaviour
         else 
         Destroy(gameObject);
        
-        coins = 0;
     }
 
     private void Update() {
-        coinsText.text = "x " + coins; 
+        
     }
 
     private void Start() {
@@ -32,10 +27,11 @@ public class ItemCollectManager : MonoBehaviour
 
     private void Reset() {
         AddCoins();
-        coins = 0;
+        coins.value = 0;
     }
 
     public void AddCoins(int amount = 1) {
-        coins += amount;
+        coins.value += amount;
     }
+
 }
