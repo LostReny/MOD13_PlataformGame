@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class SOUiIntUpdate : MonoBehaviour
@@ -17,7 +18,6 @@ public class SOUiIntUpdate : MonoBehaviour
     void Update()
     {
         UpdateUi();
-        UpdateUiLife();
     }
 
     public void UpdateUi()
@@ -25,11 +25,8 @@ public class SOUiIntUpdate : MonoBehaviour
         if (textMeshValue != null)
         {
             textMeshValue.text = soInt.value.ToString();
-        } else return; 
-    }
+        } else return;
 
-    public void UpdateUiLife()
-    {
         if (textMeshValueLife != null)
         {
             textMeshValueLife.text = soIntLife.value.ToString();

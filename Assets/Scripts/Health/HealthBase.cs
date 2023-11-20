@@ -11,11 +11,12 @@ public class HealthBase : Singleton<HealthBase>
 
   public SOInt life;
 
+
  // public int startLife = 10;
 
   public bool _destroyOnTermination = false;
 
-  [SerializeField] private float _currentLife;
+  public int _currentLife;
 
   private bool _isDead = false;
 
@@ -23,24 +24,38 @@ public class HealthBase : Singleton<HealthBase>
 
   public float delayTokill;
 
-  public void Awake(){
+    public void Awake(){
     Init();
     if(_flashColor == null){
         _flashColor = GetComponent<FlashColor>(); 
     }
+    ResetLife();
   }
   
-  private void Init(){
+  public void Init(){
     _isDead = false;
-    _currentLife = life.value;
-  }
+
+        if (life != null)
+        {
+            _currentLife = life.value;
+        }
+        else return;
+    }
+
+
+    public void ResetLife()
+    {
+        life.value = 20;
+    }
 
   public void TakeDamage(int intDamage){
 
     if(_isDead) return;
 
-    _currentLife -= intDamage;
-     Debug.Log(_currentLife);
+        _currentLife = life.value -= intDamage;
+
+         Debug.Log(_currentLife.ToString());
+       
 
         if (_currentLife <= 0){
       Die();
@@ -61,6 +76,8 @@ public class HealthBase : Singleton<HealthBase>
     OnKill?.Invoke();
 
   }
+
+    protected virtual void OnDamaged() { }
 
 }
  

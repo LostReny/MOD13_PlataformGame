@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc23c4c0f92ffb043b9d3840acf8b755, type: 3}
-  m_Name: SOIntLifeEnimies
+  m_Script: {fileID: 11500000, guid: 39f17be58cb22c44198dfd96e9338d84, type: 3}
+  m_Name: SOlifePlayerFloat
   m_EditorClassIdentifier: 
-  value: -2
+  fValue: 20

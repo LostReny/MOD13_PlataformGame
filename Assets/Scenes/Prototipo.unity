@@ -1019,6 +1019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intDamage: {fileID: 11400000, guid: 951c844d39a7cb7458c14c0537f3df9a, type: 2}
+  enemyLife: {fileID: 11400000, guid: c82ea00c521d9764986b7f8e06cd9314, type: 2}
   anim: {fileID: 2113750631}
   triggerAttack: Attack
   triggerDead: Death
@@ -3010,6 +3011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intDamage: {fileID: 11400000, guid: 951c844d39a7cb7458c14c0537f3df9a, type: 2}
+  enemyLife: {fileID: 11400000, guid: c82ea00c521d9764986b7f8e06cd9314, type: 2}
   anim: {fileID: 351177634}
   triggerAttack: Attack
   triggerDead: Death
@@ -4075,6 +4077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71228a01ab674746863514adf6d8b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 1437393720}
   coinsCounterText: {fileID: 146444846}
   lifeText: {fileID: 156530682}
 --- !u!1 &985283819
@@ -6874,7 +6877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: {fileID: 11400000, guid: 8607f549db5331445a95bf09e99d83df, type: 2}
   _destroyOnTermination: 1
-  _currentLife: 0
+  _currentLife: 20
   _flashColor: {fileID: 1385082247}
   delayTokill: 1
 --- !u!1 &1449620924
@@ -7388,6 +7391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intDamage: {fileID: 0}
+  enemyLife: {fileID: 0}
   anim: {fileID: 0}
   triggerAttack: Attack
   triggerDead: Death
@@ -8507,6 +8511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intDamage: {fileID: 11400000, guid: 951c844d39a7cb7458c14c0537f3df9a, type: 2}
+  enemyLife: {fileID: 11400000, guid: c82ea00c521d9764986b7f8e06cd9314, type: 2}
   anim: {fileID: 603640476}
   triggerAttack: Attack
   triggerDead: Death
@@ -10025,6 +10030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intDamage: {fileID: 11400000, guid: 951c844d39a7cb7458c14c0537f3df9a, type: 2}
+  enemyLife: {fileID: 11400000, guid: c82ea00c521d9764986b7f8e06cd9314, type: 2}
   anim: {fileID: 1386873489}
   triggerAttack: Attack
   triggerDead: Death
