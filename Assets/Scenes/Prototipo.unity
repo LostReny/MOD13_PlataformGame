@@ -11005,6 +11005,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_CoinsVFX
       objectReference: {fileID: 0}
+    - target: {fileID: 864728915492886189, guid: 93d1a43d7f90f684283483fd441323ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 864728915492886190, guid: 93d1a43d7f90f684283483fd441323ec, type: 3}
+      propertyPath: lengthInSec
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 864728915492886190, guid: 93d1a43d7f90f684283483fd441323ec, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 864728915492886190, guid: 93d1a43d7f90f684283483fd441323ec, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 864728915492886190, guid: 93d1a43d7f90f684283483fd441323ec, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d1a43d7f90f684283483fd441323ec, type: 3}
 --- !u!1001 &3599279343249421192
