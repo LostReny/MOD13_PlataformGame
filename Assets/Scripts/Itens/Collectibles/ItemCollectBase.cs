@@ -26,13 +26,14 @@ public class ItemCollectBase : MonoBehaviour
         Destroy(gameObject);
         OnCollect();
 
-        if (graphicItem != null) graphicItem.SetActive(false);
+        if (graphicItem != null) graphicItem.SetActive(true);
         Invoke("HideObject", timeToHide);
     }
 
     private void HideObject()
     {
         gameObject.SetActive(false);
+        
     }
 
 
@@ -40,7 +41,6 @@ public class ItemCollectBase : MonoBehaviour
     //quando coletar que ação será realizada ?
     protected virtual void OnCollect()
 {
-
         //colocar esse vfs somente para moedas 
         //criar outro para a vida
         VFXManager.Instance.PlayVFXByType(VFXManager.VFXType.COIN, transform.position);
