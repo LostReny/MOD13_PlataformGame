@@ -36,10 +36,27 @@ public class Player : MonoBehaviour
     public Animator animator;
     public float turnPlayerDuration = .1f;
 
+    [Header("Jump collision")]
+    public Collider2D _collider2D;
+    public float distanceToGround;
+    public float distanceFromGround = .1f;
+
+
     private void Awake() {
         if(healthBase != null) {
             healthBase.OnKill += OnPlayerKill;
         }
+
+        if(_collider2D != null)
+        {
+            distanceToGround = _collider2D.bounds.extents.y;
+        }
+    }
+
+    private bool isGround()
+    {
+        Debug.DrawRay(transform.position, -Vector2.up, Color.magenta, distanceToGround * distanceFromGround);
+        return Physics2D.Raycast(transform.position, -Vector2.up, distanceToGround * distanceFromGround);
     }
 
     private void OnPlayerKill(){
@@ -48,7 +65,8 @@ public class Player : MonoBehaviour
     }
 
     private void Update(){
-        
+
+        isGround();
         HandleJump();
         HandleMove();
 
@@ -106,7 +124,8 @@ public class Player : MonoBehaviour
     }
 
     private void HandleJump(){
-        if(Input.GetKey(KeyCode.Space)){
+        if(Input.GetKey(KeyCode.Space) && isGround())
+          {
             rig2D.velocity = Vector2.up * forceJump;
             rig2D.transform.localScale = Vector2.one;
 
