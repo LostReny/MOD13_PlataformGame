@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     public Collider2D _collider2D;
     public float distanceToGround;
     public float distanceFromGround = .1f;
+    public ParticleSystem jumpVFX;
 
 
     private void Awake() {
@@ -132,8 +133,9 @@ public class Player : MonoBehaviour
             animator.SetBool(boolJumping, true);
 
             DOTween.Kill(rig2D.transform);
-            
+
             //HandleScaleJump();
+            PlayJumpVFX();
             _isJumping = true;
         }
         else{
@@ -141,6 +143,11 @@ public class Player : MonoBehaviour
             animator.SetBool(boolJumping, false);
 
         }
+    }
+
+    private void PlayJumpVFX()
+    {
+        if(jumpVFX != null) { jumpVFX.Play(); }
     }
 
     private void HandleScaleJump(){
