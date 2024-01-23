@@ -11,6 +11,11 @@ public class ItemCollectBase : MonoBehaviour
     public float timeToHide = 1;
     public GameObject graphicItem;
 
+    //referencia para som 
+    [Header("Sounds")]
+    public AudioSource audioSource;
+
+
     public void OnTriggerEnter2D(Collider2D collision) {
 
         if(collision.transform.CompareTag(compareTag)){
@@ -23,8 +28,8 @@ public class ItemCollectBase : MonoBehaviour
     //o que vai acontecer quando coletar ??
     // quando coletar ele destroi e chama a ação ao coletar 
     protected virtual void Collect(){
-        Destroy(gameObject);
         OnCollect();
+        Destroy(gameObject);
 
         if (graphicItem != null) graphicItem.SetActive(true);
         Invoke("HideObject", timeToHide);
@@ -41,9 +46,12 @@ public class ItemCollectBase : MonoBehaviour
     //quando coletar que ação será realizada ?
     protected virtual void OnCollect()
 {
+
         //colocar esse vfs somente para moedas 
         //criar outro para a vida
         VFXManager.Instance.PlayVFXByType(VFXManager.VFXType.COIN, transform.position);
+        
+        if (audioSource != null) audioSource.Play();
 }
 
 }

@@ -15843,6 +15843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 4776322907957078164, guid: 2e490783f46141f478d2b782dc349ab5, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8745202096903288055, guid: 2e490783f46141f478d2b782dc349ab5, type: 3}
       propertyPath: m_RootOrder
       value: 0
