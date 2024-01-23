@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
+  timeToHide: 0.8
+  graphicItem: {fileID: 864728915492886189, guid: 93d1a43d7f90f684283483fd441323ec, type: 3}
 --- !u!58 &3451886128454860436
 CircleCollider2D:
   m_ObjectHideFlags: 0

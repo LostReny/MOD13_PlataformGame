@@ -8,6 +8,9 @@ public class ItemCollectBase : MonoBehaviour
 
     public string compareTag = "Player";
 
+    public float timeToHide = 1;
+    public GameObject graphicItem;
+
     public void OnTriggerEnter2D(Collider2D collision) {
 
         if(collision.transform.CompareTag(compareTag)){
@@ -22,13 +25,25 @@ public class ItemCollectBase : MonoBehaviour
     protected virtual void Collect(){
         Destroy(gameObject);
         OnCollect();
+
+        if (graphicItem != null) graphicItem.SetActive(true);
+        Invoke("HideObject", timeToHide);
     }
+
+    private void HideObject()
+    {
+        gameObject.SetActive(false);
+        
+    }
+
 
 
     //quando coletar que ação será realizada ?
     protected virtual void OnCollect()
 {
-    
+        //colocar esse vfs somente para moedas 
+        //criar outro para a vida
+        VFXManager.Instance.PlayVFXByType(VFXManager.VFXType.COIN, transform.position);
 }
 
 }
