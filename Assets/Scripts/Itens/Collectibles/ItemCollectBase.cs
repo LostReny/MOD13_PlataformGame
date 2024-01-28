@@ -29,6 +29,7 @@ public class ItemCollectBase : MonoBehaviour
     // quando coletar ele destroi e chama a ação ao coletar 
     protected virtual void Collect(){
         OnCollect();
+
         Destroy(gameObject);
 
         if (graphicItem != null) graphicItem.SetActive(true);
@@ -46,12 +47,15 @@ public class ItemCollectBase : MonoBehaviour
     //quando coletar que ação será realizada ?
     protected virtual void OnCollect()
 {
+        //não está funcionando, o que fazer?
+        if (!audioSource.isPlaying) { 
+            audioSource.Play();
+            Debug.Log("Esta tocando");
+        }
 
         //colocar esse vfs somente para moedas 
         //criar outro para a vida
         VFXManager.Instance.PlayVFXByType(VFXManager.VFXType.COIN, transform.position);
-        
-        if (audioSource != null) audioSource.Play();
 }
 
 }
