@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     public float distanceFromGround = .1f;
     public ParticleSystem jumpVFX;
 
+    public AudioSource audio_test; 
 
     private void Awake() {
         if(healthBase != null) {
@@ -59,6 +60,8 @@ public class Player : MonoBehaviour
         Debug.DrawRay(transform.position, -Vector2.up, Color.magenta, distanceToGround * distanceFromGround);
         return Physics2D.Raycast(transform.position, -Vector2.up, distanceToGround * distanceFromGround);
     }
+
+  
 
     private void OnPlayerKill(){
         healthBase.OnKill -= OnPlayerKill;
