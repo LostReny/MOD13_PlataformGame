@@ -30,7 +30,7 @@ public class ItemCollectBase : MonoBehaviour
     protected virtual void Collect(){
         OnCollect();
 
-        Destroy(gameObject);
+        Destroy(gameObject, 0.5f);
 
         if (graphicItem != null) graphicItem.SetActive(true);
         Invoke("HideObject", timeToHide);
@@ -47,10 +47,11 @@ public class ItemCollectBase : MonoBehaviour
     //quando coletar que ação será realizada ?
     protected virtual void OnCollect()
 {
-        //não está funcionando, o que fazer?
-        if (!audioSource.isPlaying) { 
+
+        if (!audioSource.isPlaying) {
+            audioSource.transform.SetParent(null);
             audioSource.Play();
-            Debug.Log("Esta tocando");
+            //Debug.Log("Esta tocando");
         }
 
         //colocar esse vfs somente para moedas 

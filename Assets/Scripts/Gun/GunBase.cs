@@ -9,6 +9,9 @@ public class GunBase : MonoBehaviour
     public float timeBetweenShoot = .3f;
     public Transform sideRef;
 
+    [Header("Audio")]
+    public AudioRamdonAudioPlay randomShoot;
+
 
     private Coroutine _currentCoroutine;
 
@@ -30,6 +33,9 @@ public class GunBase : MonoBehaviour
     }
 
     public void Shoot(){
+
+        if (randomShoot != null) randomShoot.PlayRandom();
+
         var projectile = Instantiate(prefabProjectile);
         projectile.transform.position = positionProjectile.position;
         projectile.side = sideRef.transform.localScale.x;
