@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SCN_Level01.unity
     guid: f978cf4ae5611c24ca9803d04dda7d5e
+  - enabled: 1
+    path: Assets/Scenes/Prototipo.unity
+    guid: ae155a003a4c3bc458efa9fb98d70d15
   m_configObjects: {}

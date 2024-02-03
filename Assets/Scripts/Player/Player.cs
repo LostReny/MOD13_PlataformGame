@@ -137,7 +137,8 @@ public class Player : MonoBehaviour
 
             DOTween.Kill(rig2D.transform);
 
-            //HandleScaleJump();
+      
+            PlaySound();
             PlayJumpVFX();
             _isJumping = true;
         }
@@ -151,6 +152,14 @@ public class Player : MonoBehaviour
     private void PlayJumpVFX()
     {
         if(jumpVFX != null) { jumpVFX.Play(); }
+    }
+
+    private void PlaySound()
+    {
+        if(audio_test != null)
+        {
+            audio_test.Play();
+        }
     }
 
     private void HandleScaleJump(){
